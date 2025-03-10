@@ -156,5 +156,24 @@ export const useStyles=makeStyles({
          width:'35%',
          gap:'25px',
          
-    }
+    },
+    message: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "fixed",
+        bottom: "100px",
+        width: "100%",
+        animation: '$slideUp 0.5s ease-in-out',
+      },
+      '@keyframes slideUp': {
+        '0%': {
+          transform: 'translateY(100%)',
+          opacity: '0',
+        },
+        '100%': {
+          transform: 'translateY(0)',
+          opacity: '1',
+        },
+      },
 })

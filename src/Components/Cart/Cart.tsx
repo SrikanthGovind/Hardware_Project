@@ -243,6 +243,7 @@ export default function Cart() {
               border: "1px solid #3CA5FB",
               padding: "3px 30px",
               borderRadius: "4px",
+              background:'white'
             }}
           >
             <Typography

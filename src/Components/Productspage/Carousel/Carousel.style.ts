@@ -81,4 +81,24 @@ export const useStyles=makeStyles({
             }
         }
     },
+    message: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "fixed",
+        bottom: "100px",
+        width: "100%",
+        animation: '$slideUp 0.5s ease-in-out',
+        zIndex:"2000"
+      },
+      '@keyframes slideUp': {
+        '0%': {
+          transform: 'translateY(100%)',
+          opacity: '0',
+        },
+        '100%': {
+          transform: 'translateY(0)',
+          opacity: '1',
+        },
+      },
 })

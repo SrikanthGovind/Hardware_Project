@@ -1,14 +1,17 @@
 import { Box, Typography, Rating, Avatar, Button } from "@mui/material";
 import { useStyles } from "./Productdetail.style";
 import { BsDot } from "react-icons/bs";
-import React from "react";
+import React, { useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import { Product, RootState } from "../../../types";
 import { cartActions } from "../../../Redux";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export default function Productdetail() {
   const style = useStyles();
+    const [show, setshow] = useState(false);
+    
   const [value, setValue] = React.useState<number | null>(3);
   const productData = useSelector((state: RootState) => state.product.items);
   const selectedProduct = useSelector(
@@ -22,6 +25,14 @@ export default function Productdetail() {
   function handleAddToCart(data: Product) {
     dispatch(cartActions.addItemtoCart(data));
   }
+
+  function handleProceed() {
+    setshow(true);
+    setTimeout(() => {
+      setshow(false);
+    }, 1000);
+  }
+
   return (
     <>
       <Box className={style.productDetailsCon}>
@@ -116,7 +127,7 @@ export default function Productdetail() {
               <Button onClick={() => handleAddToCart(data[0])}>
                 Add to Cart
               </Button>
-              <Button>Buy Now</Button>
+              <Button onClick={handleProceed}>Buy Now</Button>
             </Box>
           </Box>
         </Box>
@@ -275,6 +286,31 @@ export default function Productdetail() {
 
           </Box>
         </Box>
+
+        {show && (
+        <Box className={style.message}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1px solid #3CA5FB",
+              padding: "3px 30px",
+              borderRadius: "4px",
+              background:'white'
+            }}
+          >
+            <Typography
+              sx={{ width: "fit-content", padding: "10px", color: "#3CA5FB" }}
+            >
+              Your Order Placed Successfully
+            </Typography>
+            <CheckCircleOutlineIcon
+              sx={{ fontSize: "23px", color: "#3CA5FB" }}
+            />
+          </Box>
+        </Box>
+       )} 
       </Box>
     </>
   );
